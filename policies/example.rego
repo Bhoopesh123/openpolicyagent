@@ -7,5 +7,5 @@ deny contains msg if {
 	container := input.spec.containers[_]
 	not container.livenessProbe
 
-	msg := sprintf("liveness Probe is not present,Conformity Check Failed for container %s", [container.name])
+	msg := sprintf("liveness Probe is not present, opa check failed %s", [container.name])
 }
