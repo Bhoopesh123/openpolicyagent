@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  opa:
+    image: openpolicyagent/opa:latest
+    container_name: opa-server
+    ports:
+      - "8181:8181"
+    volumes:
+      - ./policies:/policies
+      - ./data:/data
+    command: [
+      "run",
+      "--server",
+      "--log-level", "debug",
+      "--addr", "0.0.0.0:8181",
+      "--watch",
+      "/policies",
+      "/data"
+    ]
+    restart: unless-stopped
